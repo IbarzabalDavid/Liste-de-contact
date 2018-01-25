@@ -7,7 +7,9 @@ public class main {
     public static void main(String[] args) {
 
         int choix=0;
+        int nbTel=0;
         int nbContact=0;
+        char rep='o';
         boolean ok=false;
         Conctact[] tabContact=new Conctact[20];
         Scanner sc=new Scanner(System.in);
@@ -28,8 +30,10 @@ public class main {
                     tabContact[nbContact] = new Conctact();
                     nbContact++;
                     Adresse monAddresse = new Adresse();
+                    Adresse adresseJob = new Adresse();
                     Occupation monOccupation =new Occupation();
                     Entreprise monEntreprise =new Entreprise();
+
 
                     System.out.println("Ce contact sera entré à la position #"+nbContact);
                     System.out.println("Veuillez entrer les informations suivantes :");
@@ -59,10 +63,49 @@ public class main {
                     System.out.println("  Entreprise :");
                     System.out.println("    Nom :");
                     monEntreprise.setNomJob(sc.next());
+                    System.out.println("    Adresse :");
+                    System.out.println("      Numéro de porte");
+                    adresseJob.setNumPorte(sc.next());
+                    System.out.println("      Rue :");
+                    adresseJob.setRue(sc.next());
+                    System.out.println("      Appartement :");
+                    adresseJob.setAppart(sc.next());
+                    System.out.println("      Ville :");
+                    adresseJob.setVille(sc.next());
+                    System.out.println("      Province :");
+                    adresseJob.setProvince(sc.next());
+                    System.out.println("      Pays :");
+                    adresseJob.setPays(sc.next());
 
+                    monEntreprise.setAdresseJob(adresseJob);
                     monOccupation.setJob(monEntreprise);
 
+                    while (rep=='o'){
+                        if (nbTel==10){
+                            System.out.println("Vous avez atteint le nombre maximum de numéro");
+                            rep = 'n';
+                        }
+                        else {
+                            System.out.println();
+                            System.out.println("Entrer un numéro de téléphone? (o/n)");
+                            rep= sc.next().toLowerCase().charAt(0);
+                            if (rep=='o'){
+                                Téléphone monTelephone=new Téléphone();
+                                System.out.println("À quoi correspond le numéro de téléphone? (cellulaire, maison, travail, ...)");
+                                monTelephone.setType(sc.next());
+                                System.out.println("Quel est le numéro? ");
+                                monTelephone.setNum(sc.next());
+                                tabContact[nbContact].getTabTel()[nbTel]=monTelephone;
+                                nbTel++;
+                            }
+                            else if (rep!='n'){
+                                System.out.println("Entrez «o» ou «n»");
+                                rep='o';
+                            }
+                        }
 
+                    }
+                    System.out.println("Votre contact a été rentré avec succès!");
 
                     tabContact[nbContact-1].setAdd(monAddresse);
                     tabContact[nbContact-1].setOcc(monOccupation);

@@ -6,7 +6,7 @@ public class Conctact {
     private String nom;
     private String nomFamille;
     private Adresse add;
-    private Téléphone tel;
+    private Téléphone[] tabTel= new Téléphone[10];
     private Occupation occ;
 
 
@@ -27,10 +27,7 @@ public class Conctact {
         return occ;
     }
 
-    public Téléphone getTel() {
-        return tel;
-    }
-
+    public Téléphone[] getTabTel() {return tabTel;}
 
     public void setNom(String nom) {
         this.nom = nom;
@@ -44,9 +41,7 @@ public class Conctact {
         this.add = add;
     }
 
-    public void setTel(Téléphone tel) {
-        this.tel = tel;
-    }
+    public void setTabTel(Téléphone[] tabTel) {this.tabTel = tabTel;}
 
     public void setOcc(Occupation occ) {
         this.occ = occ;
