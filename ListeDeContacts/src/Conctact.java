@@ -8,6 +8,7 @@ public class Conctact {
     private Adresse add;
     private Téléphone[] tabTel= new Téléphone[10];
     private Occupation occ;
+    private int nbNum;
 
 
 
@@ -29,6 +30,8 @@ public class Conctact {
 
     public Téléphone[] getTabTel() {return tabTel;}
 
+    public int getNbNum() { return nbNum; }
+
     public void setNom(String nom) {
         this.nom = nom;
     }
@@ -46,4 +49,6 @@ public class Conctact {
     public void setOcc(Occupation occ) {
         this.occ = occ;
     }
+
+    public void setNbNum(int nbNum) { this.nbNum = nbNum; }
 }
